@@ -29,4 +29,11 @@ describe "Merchants API" do
 
     expect(merchant[:name]).to be_a(String)
   end
+
+  it "sends all items associated with a merchant by id" do
+    #return 404 if the item is not found
+    id = create(:merchant).id
+
+    get "/api/v1/merchants/#{id}/items"
+  end
 end
