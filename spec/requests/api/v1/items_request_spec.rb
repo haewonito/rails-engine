@@ -21,15 +21,22 @@ describe "Merchants API" do
     end
   end
 
-  xit "sends a merchant by the id" do
-    id = create(:merchant).id
+  it "sends an item by the id" do
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    id = item.id
 
-    get "/api/v1/merchants/#{id}"
+    get "/api/v1/items/#{id}"
 
-    merchant = JSON.parse(response.body, symbolize_names: true)
+    item = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchant[:data][:attributes][:name]).to be_a(String)
+    expect(item[:data][:id]).to be_a(String)
+    expect(item[:data][:type]).to eq("item")
+    expect(item[:data][:attributes][:name]).to be_a(String)
+    expect(item[:data][:attributes][:description]).to be_a(String)
+    expect(item[:data][:attributes][:unit_price]).to be_a(Float)
+    expect(item[:data][:attributes][:merchant_id]).to be_a(Integer)
   end
 
   xit "sends all items associated with a merchant by id" do
