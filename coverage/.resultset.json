@@ -1,8 +1,9 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/merchant.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/item.rb": {
         "lines": [
+          1,
           1,
           null
         ]
@@ -11,6 +12,52 @@
         "lines": [
           1,
           1,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/merchant.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
           null
         ]
       },
@@ -24,6 +71,7 @@
           null,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -35,9 +83,15 @@
           null
         ]
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/application_controller.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
         "lines": [
           1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -89,6 +143,6 @@
         }
       }
     },
-    "timestamp": 1638855195
+    "timestamp": 1638915874
   }
 }
