@@ -9,12 +9,11 @@ describe "Merchants API" do
     expect(response).to be_successful
 
     merchants = JSON.parse(response.body, symbolize_names: true)
+    expect(merchants[:data].count).to be 3
 
-    expect(merchants.count).to be 3
-
-    merchants.each do |merchant|
-      expect(merchant[:id]).to be_an(Integer)
-      expect(merchant[:name]).to be_a(String)
+    merchants[:data].each do |merchant|
+      expect(merchant[:id]).to be_an(String)
+      expect(merchant[:attributes][:name]).to be_a(String)
     end
   end
 
@@ -26,14 +25,32 @@ describe "Merchants API" do
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-
-    expect(merchant[:name]).to be_a(String)
+    expect(merchant[:data][:attributes][:name]).to be_a(String)
   end
 
   it "sends all items associated with a merchant by id" do
     #return 404 if the item is not found
-    id = create(:merchant).id
+    merchant = create(:merchant)
+    # merchant_id = create(:merchant).id
+    create_list(:item, 3, merchant_id: merchant.id)
 
-    get "/api/v1/merchants/#{id}/items"
+
+    get "/api/v1/merchants/#{merchant.id}/items"
+
+
+    items = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+
+    expect(items[:data].count).to be 3
+
+    items[:data].each do |item|
+      expect(item[:id]).to be_an(String)
+      expect(item[:type]).to eq("item")
+      expect(item[:attributes][:name]).to be_a(String)
+      expect(item[:attributes][:description]).to be_a(String)
+      expect(item[:attributes][:unit_price]).to be_a(Float)
+      expect(item[:attributes][:merchant_id]).to be_a(Integer)
+    end
   end
 end

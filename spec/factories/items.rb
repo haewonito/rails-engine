@@ -1,8 +1,11 @@
 FactoryBot.define do
-  factory :item do
-    name { "MyString" }
-    description { "MyString" }
-    unit_price { 1.5 }
-    merchant { nil }
+  factory :item, class:Item do
+    association :merchant
+
+    name { Faker::Name.name }
+    description { Faker::GreekPhilosophers.quote }
+    unit_price { Faker::Commerce.price }
+    id { Faker::Number.unique.within(range: 1..10000000) }
+    # merchant { nil }
   end
 end

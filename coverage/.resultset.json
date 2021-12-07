@@ -18,6 +18,8 @@
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/merchant.rb": {
         "lines": [
           1,
+          1,
+          null,
           null
         ]
       },
@@ -29,6 +31,7 @@
           1,
           null,
           null,
+          1,
           1,
           1,
           null,
@@ -48,13 +51,35 @@
           null
         ]
       },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           1,
           null,
           1,
+          1,
+          1,
           null,
           null,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
           null,
           null
         ]
@@ -107,6 +132,6 @@
         }
       }
     },
-    "timestamp": 1638857140
+    "timestamp": 1638910314
   }
 }
