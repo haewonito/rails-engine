@@ -68,23 +68,33 @@ describe "Merchants API" do
     # expect(created_item[:data][:attributes][:merchant_id]).to eq(item_params[:merchant_id])
   end
 
-  xit "can update an existing book" do
-    id = create(:book).id
-    previous_name = Book.last.title
-    book_params = { title: "Charlotte's Web" }
+  it "can update an existing item" do
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    item_id = item.id
+
+    previous_name = Item.last.name
+    item_params = { name: "Desk Top" }
     headers = {"CONTENT_TYPE" => "application/json"}
 
     # We include this header to make sure that these params are passed as JSON rather than as plain text
-    patch "/api/v1/books/#{id}", headers: headers, params: JSON.generate({book: book_params})
-    book = Book.find_by(id: id)
+    patch "/api/v1/items/#{item_id}", headers: headers, params: JSON.generate({item: item_params})
+    item = Item.find_by(id: item_id)
 
     expect(response).to be_successful
-    expect(book.title).to_not eq(previous_name)
-    expect(book.title).to eq("Charlotte's Web")
+    expect(item.name).to_not eq(previous_name)
+    expect(item.name).to eq("Desk Top")
   end
 
-  xit "can destroy an book" do
-    book = create(:book)
+  it "can destroy an item" do
+      # destroy the corresponding record (if found) and any associated data
+      # destroy any invoice if this was the only item on an invoice
+      # NOT return any JSON body at all, and should return a 204 HTTP status code
+      # NOT utilize a Serializer (Rails will handle sending a 204 on its own if you just .destroy the object)
+      merchant = create(:merchant)
+      item = create(:item, merchant_id: merchant.id)
+      item_id = item.id
+      
 
     expect(Book.count).to eq(1)
 
