@@ -28,13 +28,23 @@
           1,
           null,
           1,
+          0,
+          null,
+          null,
           1,
+          0,
+          0,
           null,
           null,
           1,
           1,
           1,
           null,
+          null,
+          1,
+          null,
+          1,
+          1,
           null,
           null
         ]
@@ -66,40 +76,6 @@
           null
         ]
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/mailers/application_mailer.rb": {
         "lines": [
           0,
@@ -127,6 +103,44 @@
         "branches": {
         }
       },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
@@ -148,6 +162,6 @@
         }
       }
     },
-    "timestamp": 1638917095
+    "timestamp": 1638937340
   }
 }
