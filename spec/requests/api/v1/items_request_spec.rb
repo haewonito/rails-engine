@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Merchants API" do
+describe "Items API" do
   it "sends a list of all items" do
     create_list(:item, 5)
 
@@ -91,17 +91,20 @@ describe "Merchants API" do
       # destroy any invoice if this was the only item on an invoice
       # NOT return any JSON body at all, and should return a 204 HTTP status code
       # NOT utilize a Serializer (Rails will handle sending a 204 on its own if you just .destroy the object)
-      merchant = create(:merchant)
-      item = create(:item, merchant_id: merchant.id)
-      item_id = item.id
-      
+    customer = create(:customer)
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
 
-    expect(Book.count).to eq(1)
+    expect(Item.count).to eq(1)
 
-    delete "/api/v1/books/#{book.id}"
+    delete "/api/v1/items/#{item.id}"
 
     expect(response).to be_successful
-    expect(Book.count).to eq(0)
-    expect{Book.find(book.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Item.count).to eq(0)
+    expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  xit "can destroy invoice related to that item if it's the only one" do
   end
 end
