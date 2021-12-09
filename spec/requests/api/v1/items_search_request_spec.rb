@@ -15,7 +15,6 @@ describe "Items_search API" do
 
     expect(response).to be_successful
     item_list = JSON.parse(response.body, symbolize_names: true)
-# require "pry"; binding.pry
     expect(item_list[:data]).to be_an(Array)
     expect(item_list[:data].length).to eq(4)
     expect(item_list[:data][0][:attributes][:name]).to eq("titanium rings")

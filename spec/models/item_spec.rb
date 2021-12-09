@@ -41,5 +41,27 @@ RSpec.describe Item do
       expect(resulting_items).to include(item4)
 
     end
+
+    it "#find_items_with_minp" do
+      merchant = Merchant.create(name: "Turing")
+      item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+      item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+      item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+      item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
+      resulting_items = Item.find_items_with_min(5)
+      expect(resulting_items).to eq([item3, item4])
+    end
+
+    it "#find_items_with_maxp" do
+      merchant = Merchant.create(name: "Turing")
+      item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+      item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+      item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+      item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
+      resulting_items = Item.find_items_with_max(20)
+      expect(resulting_items).to eq([item1, item2, item3])
+    end
   end
 end
