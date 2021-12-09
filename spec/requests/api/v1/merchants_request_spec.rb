@@ -17,22 +17,34 @@ describe "Merchants API" do
     end
   end
 
-  it "sends a merchant by the id" do
-    id = create(:merchant).id
+  it "sends a merchant by the id: happy path" do
+    merchant = create(:merchant)
 
-    get "/api/v1/merchants/#{id}"
+    get "/api/v1/merchants/#{merchant.id}"
 
-    merchant = JSON.parse(response.body, symbolize_names: true)
+    merchant_parsed = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(merchant[:data][:attributes][:name]).to be_a(String)
+    expect(merchant_parsed[:data][:attributes][:name]).to be_a(String)
+    expect(merchant_parsed[:data][:attributes][:name]).to eq(merchant.name)
+  end
+
+  it "sends a merchant by the id: sad path" do
+    merchant = create(:merchant)
+    invalid_id = merchant.id + 1
+
+    get "/api/v1/merchants/#{invalid_id}"
+    expect(response).to have_http_status(404)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("A merchant with this id does not exist.")
+
   end
 
   it "sends all items associated with a merchant by id" do
     #return 404 if the item is not found
     merchant = create(:merchant)
     # merchant_id = create(:merchant).id
-    create_list(:item, 3, merchant_id: merchant.id)
+    create_list(:item, 4, merchant_id: merchant.id)
 
 
     get "/api/v1/merchants/#{merchant.id}/items"
@@ -42,7 +54,7 @@ describe "Merchants API" do
 
     expect(response).to be_successful
 
-    expect(items[:data].count).to be 3
+    expect(items[:data].count).to be 4
 
     items[:data].each do |item|
       expect(item[:id]).to be_an(String)
@@ -53,4 +65,24 @@ describe "Merchants API" do
       expect(item[:attributes][:merchant_id]).to be_a(Integer)
     end
   end
+
+  it "sends a merchant by the id: sad path: invalid_id" do
+    merchant = create(:merchant)
+    invalid_id = merchant.id + 1
+    create_list(:item, 4, merchant_id: merchant.id)
+
+    get "/api/v1/merchants/#{invalid_id}"
+    expect(response).to have_http_status(404)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("A merchant with this id does not exist.")
+  end
+
+  it "sends a merchant by the id: sad path: merchant has no items" do
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/#{merchant.id}/items"
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("A merchant with this id does not have any item.")
+  end
+
 end

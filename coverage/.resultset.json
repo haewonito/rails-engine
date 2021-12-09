@@ -23,33 +23,28 @@
           null
         ]
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_controller.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
         "lines": [
           1,
           null,
           1,
-          0,
           null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
           null,
           1,
           0,
+          null,
+          1,
+          null,
+          null,
           0,
           null,
           null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
           null,
           null
         ]
@@ -57,27 +52,6 @@
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/application_controller.rb": {
         "lines": [
           1,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
           null
         ]
       },
@@ -93,6 +67,30 @@
       },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/customer.rb": {
         "lines": [
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          0,
+          0,
+          null,
           0,
           null,
           0
@@ -120,6 +118,10 @@
           0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
           null,
           0,
           null,
@@ -132,15 +134,34 @@
         "branches": {
         }
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           0,
           null,
           0,
           0,
           0,
+          null,
+          0,
+          0,
+          0,
           0,
           null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           0
         ],
         "branches": {
@@ -167,6 +188,6 @@
         }
       }
     },
-    "timestamp": 1638938943
+    "timestamp": 1639073250
   }
 }
