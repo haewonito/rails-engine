@@ -16,8 +16,8 @@ describe "Merchants_search API" do
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(merchant[:data]).to be_a(Hash)
-    expect(merchant[:data][:id]).to eq(@merchant1.id.to_s)
-    expect(merchant[:data][:attributes][:name]).to eq(@merchant1.name)
+    expect(merchant[:data][:id]).to eq(@merchant3.id.to_s)
+    expect(merchant[:data][:attributes][:name]).to eq(@merchant3.name)
 
   end
 end

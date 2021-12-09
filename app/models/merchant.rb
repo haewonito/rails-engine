@@ -3,7 +3,7 @@ class Merchant < ApplicationRecord
 
   def self.find_merchant(search_word)
     where("name ILIKE ?", "%#{search_word}")
-    .order(:name)
+    .order(name: :desc)
     .first
 
   end
