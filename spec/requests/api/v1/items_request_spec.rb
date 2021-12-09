@@ -86,7 +86,7 @@ describe "Merchants API" do
     expect(item.name).to eq("Desk Top")
   end
 
-  it "can destroy an item" do
+  xit "can destroy an item" do
       # destroy the corresponding record (if found) and any associated data
       # destroy any invoice if this was the only item on an invoice
       # NOT return any JSON body at all, and should return a 204 HTTP status code
@@ -94,7 +94,7 @@ describe "Merchants API" do
       merchant = create(:merchant)
       item = create(:item, merchant_id: merchant.id)
       item_id = item.id
-      
+
 
     expect(Book.count).to eq(1)
 
