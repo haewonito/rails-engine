@@ -7,7 +7,7 @@ describe "Merchants_search API" do
     @merchant3 = Merchant.create(name: "Rings That You Love")
   end
 
-  it "happy path: sends the first search result" do
+  it "happy path: sends the first search result - first in alphabetical order" do
 
     get "/api/v1/merchants/find?name=Ring"
 
@@ -20,4 +20,15 @@ describe "Merchants_search API" do
     expect(merchant[:data][:attributes][:name]).to eq(@merchant3.name)
 
   end
+
+  it "happy path: sends the first search result: case insensitive" do
+
+    get "/api/v1/merchants/find?name=ti"
+    merchant = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(merchant[:data][:id]).to eq(@merchant2.id.to_s)
+    expect(merchant[:data][:attributes][:name]).to eq(@merchant2.name)
+  end
+  
 end
