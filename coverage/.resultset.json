@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/item.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/customer.rb": {
         "lines": [
           1,
           1,
@@ -15,10 +15,65 @@
           null
         ]
       },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/merchant.rb": {
         "lines": [
           1,
           1,
+          1,
+          null
+        ]
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
@@ -28,28 +83,35 @@
           1,
           null,
           1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
           0,
           null,
           null,
           1,
-          0,
-          0,
-          null,
           null,
           1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
+          2,
           null,
           null
         ]
@@ -81,20 +143,19 @@
           null
         ]
       },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/invoice_item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
           0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/customer.rb": {
-        "lines": [
-          0,
-          null,
           0
         ],
         "branches": {
@@ -167,6 +228,6 @@
         }
       }
     },
-    "timestamp": 1638938943
+    "timestamp": 1639026826
   }
 }

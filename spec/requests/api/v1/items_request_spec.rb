@@ -77,7 +77,6 @@ describe "Merchants API" do
     item_params = { name: "Desk Top" }
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     patch "/api/v1/items/#{item_id}", headers: headers, params: JSON.generate({item: item_params})
     item = Item.find_by(id: item_id)
 
@@ -87,21 +86,37 @@ describe "Merchants API" do
   end
 
   it "can destroy an item" do
-      # destroy the corresponding record (if found) and any associated data
-      # destroy any invoice if this was the only item on an invoice
-      # NOT return any JSON body at all, and should return a 204 HTTP status code
-      # NOT utilize a Serializer (Rails will handle sending a 204 on its own if you just .destroy the object)
-      merchant = create(:merchant)
-      item = create(:item, merchant_id: merchant.id)
-      item_id = item.id
-      
+        # destroy the corresponding record (if found) and any associated data
+        # destroy any invoice if this was the only item on an invoice
+        # NOT return any JSON body at all, and should return a 204 HTTP status code
+        # NOT utilize a Serializer (Rails will handle sending a 204 on its own if you just .destroy the object)
+    customer = create(:customer)
+    merchant = create(:merchant)
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 2.50)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 3.50)
+    invoice1 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+    invoice2 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+    invoice_item1 = InvoiceItem.create(item_id: item1.id, invoice_id: invoice1.id, quantity: 100, unit_price: 5.00)
+    invoice_item2 = InvoiceItem.create(item_id: item1.id, invoice_id: invoice2.id, quantity: 100, unit_price: 5.00)
+    # invoice_item3 = InvoiceItem.create(item_id: item1.id, invoice_id: invoice2.id, quantity: 100, unit_price: 5.00)
+    #invoice2 should be destroyed
+    # invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
 
-    expect(Book.count).to eq(1)
+    expect(Item.count).to eq(2)
+    expect(Invoice.count).to eq(2)
 
-    delete "/api/v1/books/#{book.id}"
+    delete "/api/v1/items/#{item1.id}"
 
     expect(response).to be_successful
-    expect(Book.count).to eq(0)
-    expect{Book.find(book.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Item.count).to eq(1)
+    # expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Invoice.count).to eq(0)
+  end
+
+  xit "can destroy invoice related to that item if it's the only one" do
+
+    merchant = create(:merchant)
+    customer = create(:customer)
+
   end
 end
