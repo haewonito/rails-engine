@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Merchants API" do
+describe "Items API" do
   it "sends a list of all items" do
     create_list(:item, 5)
 
@@ -21,7 +21,7 @@ describe "Merchants API" do
     end
   end
 
-  it "sends an item by the id" do
+  it "sends an item by the id: happy path" do
     merchant = create(:merchant)
     item = create(:item, merchant_id: merchant.id)
     id = item.id
@@ -37,6 +37,18 @@ describe "Merchants API" do
     expect(item[:data][:attributes][:description]).to be_a(String)
     expect(item[:data][:attributes][:unit_price]).to be_a(Float)
     expect(item[:data][:attributes][:merchant_id]).to be_a(Integer)
+  end
+
+  it "sends an item by the id: sad path" do
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    invalid_id = item.id + 1
+
+    get "/api/v1/items/#{invalid_id}"
+    expect(response).to have_http_status(404)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("An item with this id does not exist.")
+
   end
   it "can create a new item" do
     #sad path where attribute types are incorrect
