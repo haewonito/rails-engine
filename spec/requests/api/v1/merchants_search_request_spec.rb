@@ -30,5 +30,5 @@ describe "Merchants_search API" do
     expect(merchant[:data][:id]).to eq(@merchant2.id.to_s)
     expect(merchant[:data][:attributes][:name]).to eq(@merchant2.name)
   end
-  
+
 end
