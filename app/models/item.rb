@@ -17,8 +17,8 @@ class Item < ApplicationRecord
   end
 
   def self.find_items_with_minmax(min_price, max_price)
-    where( "unit_price > ?", "#{min_price}")
+    where( " unit_price > ?", "#{min_price}")
     .where( "unit_price < ?", "#{max_price}")
   end
-
+#combine the methods
 end

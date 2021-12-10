@@ -76,25 +76,51 @@ describe "Items_search API" do
     item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
     item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
     item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
     get "/api/v1/items/find?min_price=5"
+    expect(response).to be_successful
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
 
+    response_parsed[:data].each do |item|
+      expect(item[:attributes][:unit_price]).to be > 5
+    end
   end
 
-  xit "sends result with maximum price" do
+  it "sends result with maximum price" do
     merchant = Merchant.create(name: "Turing")
     item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
     item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
     item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
     item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
     get "/api/v1/items/find?max_price=10"
+
+    expect(response).to be_successful
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+
+    response_parsed[:data].each do |item|
+      expect(item[:attributes][:unit_price]).to be < 10
+    end
   end
 
-  xit "sends results with minimum and maximum price" do
+  it "sends results with minimum and maximum price" do
     merchant = Merchant.create(name: "Turing")
     item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
     item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
     item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
     item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
     get "/api/v1/items/find?min_price=1&max_price=20"
+
+    expect(response).to be_successful
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+
+    response_parsed[:data].each do |item|
+      expect(item[:attributes][:unit_price]).to be < 20
+      expect(item[:attributes][:unit_price]).to be > 1
+    end
+
   end
+
+
 end

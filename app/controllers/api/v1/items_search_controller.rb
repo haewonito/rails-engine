@@ -17,16 +17,16 @@ class Api::V1::ItemsSearchController < ApplicationController
         render json: { "data": []}
       end
     else
-      require "pry"; binding.pry
-      if params(:min_price) and params(:max_price)
-        items = Item.find_items_with_minmax(params(:min_price), params(:max_price))
-        renter json: ItemSerializer.new(items)
-      elsif params(:min_price) and !params(:max_price)
-          items = Item.find_items_with_min(params(:min_price))
-          renter json: ItemSerializer.new(items)
-      elsif !params(:min_price) and params(:max_price)
-          items = Item.find_items_with_max(params(:max_price))
-          renter json: ItemSerializer.new(items)
+
+      if params[:min_price] and params[:max_price]
+        items = Item.find_items_with_minmax(params[:min_price], params[:max_price])
+        render json: ItemSerializer.new(items)
+      elsif params[:min_price] and !params[:max_price]
+          items = Item.find_items_with_min(params[:min_price])
+          render json: ItemSerializer.new(items)
+      elsif !params[:min_price] and params[:max_price]
+          items = Item.find_items_with_max(params[:max_price])
+          render json: ItemSerializer.new(items)
       end
     end
   end
