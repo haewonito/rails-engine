@@ -40,4 +40,61 @@ describe "Items_search API" do
     expect(item_list[:data]).to be_an(Array)
     expect(item_list[:data].length).to eq(0)
   end
+
+  it "sends an error message if both name and price are sent" do
+    merchant = Merchant.create(name: "Turing")
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+    item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+    item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
+
+    get "/api/v1/items/find?name=whatever&max_price=10"
+
+    expect(response).to have_http_status(400)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("Cannot have both name and price query.")
+  end
+
+  it "sends an error message if neither name or price is sent" do
+    merchant = Merchant.create(name: "Turing")
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+    item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+    item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+
+    get "/api/v1/items/find"
+
+    expect(response).to have_http_status(400)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("Have to have either name or price for search.")
+    end
+
+  it "sends result with minimum price" do
+    merchant = Merchant.create(name: "Turing")
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+    item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+    item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+    get "/api/v1/items/find?min_price=5"
+
+  end
+
+  xit "sends result with maximum price" do
+    merchant = Merchant.create(name: "Turing")
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+    item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+    item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+    get "/api/v1/items/find?max_price=10"
+  end
+
+  xit "sends results with minimum and maximum price" do
+    merchant = Merchant.create(name: "Turing")
+    item1 = create(:item, merchant_id: merchant.id, unit_price: 1.00)
+    item2 = create(:item, merchant_id: merchant.id, unit_price: 5.00)
+    item3 = create(:item, merchant_id: merchant.id, unit_price: 10.00)
+    item4 = create(:item, merchant_id: merchant.id, unit_price: 20.00)
+    get "/api/v1/items/find?min_price=1&max_price=20"
+  end
 end
