@@ -115,6 +115,24 @@ describe "Items API" do
     expect(item.name).to eq("Desk Top")
   end
 
+  it "can update an existing item: Happy Path: with new merchant id" do
+    merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
+    item = create(:item, merchant_id: merchant1.id)
+    item_id = item.id
+
+    previous_name = Item.last.name
+    item_params = { merchant_id:  merchant2.id }
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    # We include this header to make sure that these params are passed as JSON rather than as plain text
+    patch "/api/v1/items/#{item_id}", headers: headers, params: JSON.generate({item: item_params})
+    item = Item.find_by(id: item_id)
+
+    expect(response).to be_successful
+    expect(item.merchant_id).to eq(merchant2.id)
+  end
+
   it "can update an existing item: Sad Path" do
     merchant = create(:merchant)
     item = create(:item, merchant_id: merchant.id)

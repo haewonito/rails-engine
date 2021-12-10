@@ -65,7 +65,7 @@ describe "Merchants API" do
       expect(item[:attributes][:merchant_id]).to be_a(Integer)
     end
   end
-
+#not sure why coverage says this isn't covered in MerchantItemsController line18
   it "sends a merchant by the id: sad path: invalid_id" do
     merchant = create(:merchant)
     invalid_id = merchant.id + 1
