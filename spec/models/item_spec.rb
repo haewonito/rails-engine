@@ -75,4 +75,25 @@ RSpec.describe Item do
       expect(resulting_items).to eq([item3])
     end
   end
+  describe "instance method" do
+    # it "#check_params" do
+    #   item = create(:item)
+    #   good_params = ({
+    #                   "name": "Laptop",
+    #                   "description": "World's Greatest Laptop",
+    #                   "unit_price": 100.99,
+    #                   "merchant_id": 10
+    #                 })
+    #   bad_params = ({
+    #                   "name": "Laptop",
+    #                   "description": "World's Greatest Laptop",
+    #                   "unit_price": "100.99",
+    #                   "merchant_id": 10
+    #                 })
+    #   result1 = item.check_params(good_params)
+    #   result2 = item.check_params(bad_params)
+    #   require "pry"; binding.pry
+    #
+    # end
+  end
 end
