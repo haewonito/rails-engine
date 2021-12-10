@@ -74,6 +74,7 @@ describe "Items API" do
     expect(created_item.merchant_id).to eq(item_params[:merchant_id])
   end
 
+
   it "can create a new item: Edge case with missing attribute " do
     #sad path where attribute types are incorrect
 
@@ -96,7 +97,7 @@ describe "Items API" do
 
   end
 
-  it "can update an existing item" do
+  it "can update an existing item: Happy Path" do
     merchant = create(:merchant)
     item = create(:item, merchant_id: merchant.id)
     item_id = item.id
@@ -114,22 +115,40 @@ describe "Items API" do
     expect(item.name).to eq("Desk Top")
   end
 
-  xit "can destroy an item" do
+  it "can update an existing item: Sad Path" do
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    item_id = item.id
+    bad_merchant_id = merchant.id + 1
+
+    previous_name = Item.last.name
+    item_params = { merchant_id: bad_merchant_id }
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    # We include this header to make sure that these params are passed as JSON rather than as plain text
+    patch "/api/v1/items/#{item_id}", headers: headers, params: JSON.generate({item: item_params})
+
+    expect(response).to have_http_status(400)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("A merchant with this id does not exist.")
+  end
+
+  it "can destroy an item" do
       # destroy the corresponding record (if found) and any associated data
       # destroy any invoice if this was the only item on an invoice
       # NOT return any JSON body at all, and should return a 204 HTTP status code
       # NOT utilize a Serializer (Rails will handle sending a 204 on its own if you just .destroy the object)
-      merchant = create(:merchant)
-      item = create(:item, merchant_id: merchant.id)
-      item_id = item.id
+    customer = Customer.create(first_name: "Haewon", last_name: "Jeon")
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    # invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
 
+    expect(Item.count).to eq(1)
 
-    expect(Book.count).to eq(1)
-
-    delete "/api/v1/books/#{book.id}"
+    delete "/api/v1/items/#{item.id}"
 
     expect(response).to be_successful
-    expect(Book.count).to eq(0)
-    expect{Book.find(book.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Item.count).to eq(0)
+    expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
