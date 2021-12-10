@@ -119,8 +119,5 @@ describe "Items_search API" do
       expect(item[:attributes][:unit_price]).to be < 20
       expect(item[:attributes][:unit_price]).to be > 1
     end
-
   end
-
-
 end
