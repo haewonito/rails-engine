@@ -50,7 +50,7 @@ describe "Items API" do
     expect(response_parsed[:errors][:details]).to eq("An item with this id does not exist.")
 
   end
-  it "can create a new item" do
+  it "can create a new item: Happy Path" do
     #sad path where attribute types are incorrect
     #edge cases where any attribute is missing
     merchant = create(:merchant)
@@ -72,12 +72,28 @@ describe "Items API" do
     expect(created_item.description).to eq(item_params[:description])
     expect(created_item.unit_price).to eq(item_params[:unit_price])
     expect(created_item.merchant_id).to eq(item_params[:merchant_id])
-    # expect(response).to be_successful
-    # expect(created_item[:data][:id]).to eq(item_params[:name])
-    # expect(created_item[:data][:attributes][:name]).to eq(item_params[:name])
-    # expect(created_item[:data][:attributes][:description]).to eq(item_params[:description])
-    # expect(created_item[:data][:attributes][:unit_price]).to eq(item_params[:unit_price])
-    # expect(created_item[:data][:attributes][:merchant_id]).to eq(item_params[:merchant_id])
+  end
+
+  it "can create a new item: Edge case with missing attribute " do
+    #sad path where attribute types are incorrect
+
+    merchant = create(:merchant)
+    bad_item_params = ({
+                    "name": "Laptop",
+                    "description": "World's Greatest Laptop",
+                    "unit_price": "100.99",
+                  })
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    # We include this header to make sure that these params are passed as JSON rather than as plain text
+    post "/api/v1/items", headers: headers, params: JSON.generate(item: bad_item_params)
+    created_item = Item.last
+
+    expect(response).to have_http_status(400)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("One or more attributes are invalid or missing.")
+
   end
 
   it "can update an existing item" do

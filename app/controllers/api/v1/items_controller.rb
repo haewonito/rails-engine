@@ -15,7 +15,11 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     item = Item.create(item_params)
-    render json: ItemSerializer.new(item)
+    if item.save
+      render json: ItemSerializer.new(item)
+    else
+      render json: {errors: {details: "One or more attributes are invalid or missing."}}, status: 400
+    end
   end
 
   def update

@@ -7,29 +7,35 @@
           1,
           null,
           1,
-<<<<<<< HEAD
-          4,
-          4,
-          null,
-          4,
-          null,
+          1,
+          1,
+          1,
           null,
           1,
-          2,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          2,
-=======
           0,
           0,
           null,
           0,
->>>>>>> 2fdf081e08f5cc53c7ae8e25c560ad927cf78800
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -49,7 +55,7 @@
           1,
           null,
           1,
-          3,
+          0,
           null,
           null,
           null,
@@ -65,32 +71,32 @@
           null,
           null,
           1,
-<<<<<<< HEAD
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
           1,
+          1,
+          1,
+          0,
+          null,
           1,
           null,
           null,
+          null,
           1,
-          1,
-          1,
-=======
+          0,
           0,
           null,
           null,
           1,
-          0,
->>>>>>> 2fdf081e08f5cc53c7ae8e25c560ad927cf78800
-          null,
           null,
           1,
           1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
           null,
           null
         ]
@@ -101,136 +107,85 @@
           null
         ]
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          2,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          3,
-          1,
-          1,
-          null,
-          2,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          2,
-          2,
-          2,
-          null,
-          2,
-          1,
-          null,
-          1,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-<<<<<<< HEAD
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_search_controller.rb": {
-        "lines": [
-          1,
-          1,
-          2,
-          2,
-          2,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
           0,
-=======
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/customer.rb": {
+        "lines": [
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_items_controller.rb": {
         "lines": [
           0,
@@ -254,18 +209,11 @@
           0,
           0,
           null,
->>>>>>> 2fdf081e08f5cc53c7ae8e25c560ad927cf78800
           0
         ],
         "branches": {
         }
       },
-<<<<<<< HEAD
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/models/customer.rb": {
-        "lines": [
-          0,
-          null,
-=======
       "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/items_search_controller.rb": {
         "lines": [
           0,
@@ -300,14 +248,23 @@
           0,
           0,
           0,
->>>>>>> 2fdf081e08f5cc53c7ae8e25c560ad927cf78800
           0
         ],
         "branches": {
         }
       },
-      "/Users/haewonjeon/right_now_Turing/rails-engine/app/jobs/application_job.rb": {
+      "/Users/haewonjeon/right_now_Turing/rails-engine/app/controllers/api/v1/merchant_search_controller.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
           0,
           0
         ],
@@ -335,10 +292,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    "timestamp": 1639098451
-=======
-    "timestamp": 1639099078
->>>>>>> 2fdf081e08f5cc53c7ae8e25c560ad927cf78800
+    "timestamp": 1639104619
   }
 }
