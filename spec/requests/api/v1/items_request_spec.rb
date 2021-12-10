@@ -151,4 +151,31 @@ describe "Items API" do
     expect(Item.count).to eq(0)
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it "sends a merchant associated with the item by id: happy path" do
+    #return 404 if the item is not found
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+
+    get "/api/v1/items/#{item.id}/merchant"
+
+
+    parsed_merchant = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(parsed_merchant[:data][:attributes][:name]).to be_a(String)
+    expect(parsed_merchant[:data][:attributes][:name]).to eq(merchant.name)
+  end
+
+  it "sends a merchant associated with the item by id: sad path: item doesn't exist" do
+    merchant = create(:merchant)
+    item = create(:item, merchant_id: merchant.id)
+    invalid_item_id = item.id + 1
+
+    get "/api/v1/items/#{invalid_item_id}/merchant"
+    expect(response).to have_http_status(404)
+    response_parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(response_parsed[:errors][:details]).to eq("An item with this id does not exist.")
+
+  end
 end

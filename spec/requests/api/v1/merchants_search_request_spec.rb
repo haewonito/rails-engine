@@ -31,4 +31,9 @@ describe "Merchants_search API" do
     expect(merchant[:data][:attributes][:name]).to eq(@merchant2.name)
   end
 
+  it "sad path? send no content if there's no result" do
+
+    get "/api/v1/merchants/find?name=nomatch"
+    expect(response.body).to be_empty
+  end
 end

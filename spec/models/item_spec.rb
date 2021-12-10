@@ -3,10 +3,13 @@ require "rails_helper"
 RSpec.describe Item do
   describe "validations" do
     xit { should validate_presence_of :name}
+    xit { should validate_presence_of :description}
+    xit { should validate_presence_of :unit_price}
+    xit { should validate_presence_of :merchant_id}
   end
 
   describe "relationships" do
-    xit {should have_many :items}
+    xit {should belong_to :merchant}
   end
 
   describe "class methods" do
